@@ -22,7 +22,7 @@ do
 	lastlogline=`/usr/local/bin/docker logs --tail 1 ${dockercontainer}`
 
 	if [ "$lastevent" == "$lastlogline" ]; then 
-    		echo 'Nothing to do, exitting.' 
+    		echo 'Nothing to do, exiting.' 
 	else
     		# new event, lets check if we should push the event to Gotify
 
