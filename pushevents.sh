@@ -36,8 +36,8 @@ do
 
     		#login
     		if [[ "$lastlogline" == *"Player connected:"* ]]; then
-        		USERNAME=`echo $lastlogline | awk '{print $6}'`
-			XUID=`echo $lastlogline | awk '{print $8}'`
+        		USERNAME=`echo $lastlogline | awk '{print $4}'`
+			XUID=`echo $lastlogline | awk '{print $6}'`
         		TITLE="${USERNAME%?} joined the game"
         		MESSAGE="XUID=$XUID"
 			# save the login time in seconds for the user into a state file
@@ -47,8 +47,8 @@ do
 
     		#logout
     		if [[ "$lastlogline" == *"Player disconnected:"* ]]; then
-        		USERNAME=`echo $lastlogline | awk '{print $6}'`
-        		XUID=`echo $lastlogline | awk '{print $8}'`
+        		USERNAME=`echo $lastlogline | awk '{print $4}'`
+        		XUID=`echo $lastlogline | awk '{print $6}'`
         		TITLE="${USERNAME%?} left the game"
 			# calculate the time online
 			if [ -f ${bdspath}"${USERNAME%?}".txt ]; then
